@@ -1,0 +1,3 @@
+https://psgc.gitlab.io/api/provinces.json
+https://psgc.gitlab.io/api/provinces/"+provinceCode+"/cities-municipalities.json
+https://psgc.gitlab.io/api/cities-municipalities/"+municipalityCode+"/barangays.json

@@ -1,0 +1,121 @@
+how do you implement business plan?
+
+1. Capex proposal and presentation
+2. Capex approval by authority
+3. when forwarded, ifoforward na sya sa purchasing for acquisition, then to contractors and billing
+4. last step is energization of the project
+
+
+innovations
+
+1 BWSI Billing System (Elite) (In-House Design)
+2 BWSI Accounting and Supply Chain System (IIS)
+3 BWSI Learning Management System (BW University)
+4 BWSI Online Payment Platform (Bayad Center)
+5 HR Information and Payroll System (CodeTech HRIS)
+6 Design/Development of a 1.5 MLD WTP (In-House Design)
+7 Design/Development of Multi-Media Filtration Systems (InHouse Design)
+8 ISO9001:2015 Certification from 2018 to 2023
+9 Renewable Energy Alternatives (Solar Energy
+Technologies)
+10 Hydraulic Simulation Program (WATERGEMS)
+
+as of july 2023
+24hr 85%
+16 psi 75%
+water quality 97%
+
+capex will slove the lacks of lsc
+
+everymonth may report si branch for lsc,
+
+
+
+
+Q1&2: How do you rate yourself when it comes to levels of service commitment (LSC), and what do you do when you don't achieve the LSC?
+A1: As of July 31, 2023
+Water availability - 85% (24/7)
+Water pressure - 75% (@16psi + above 16psi)
+Water quality - 97%
+A2: When LSCs are not achieved - introduce CAPEX Projects
+
+Q3: Who prepares the report card?
+A3: The Branch Manager prepares the branch report card i.e., Comparative Monthly Report (CMR), reviewed by the Area Manager, forwarded to and consolidated by our Project Monitoring Associate and Executive Manager for preparation of the Operating and Financial Statistics (OFS), ultimately submitted to the President, VPOs and CFO
+
+
+
+safety operations
+
+1. Operations? Hazard identification risk and control
+2. Management to implement? 
+	safety programs
+	- Ergonomics
+	- Chemical Handling
+	- Electrical Handling
+	- Safety Fleet (Driving)
+	- Mental Health Program
+	- Pipe Laying
+	- Confined Spaces (Working on heights and Closed Spaces)
+	- Covid 19
+
+	Heirarchy of Controls
+	- elimination 			- remove hazard
+	- substitution 			- replace hazard
+	- Engineering Controls 		- isolate people from hazard
+	- Administrative Controls 	- change the way people work
+	- PPE 				- protect worker with PPE
+3. Core team and support service center
+
+	goals of safety improvement plan? 
+
+	- Planned Job Observation 	- performing all aspect of job
+	- Worker Job Selection 		- right person with knowledge for the job
+	- Evaluation and Recording 	- assessment and recording of reporting worker
+	- Training - 
+	- Communication
+	- Involvement
+	
+	Targets
+	1. Effective safety Program 2. Performing Standadization 3.Zero Accident
+
+BWSI Emergency Situations
+
+	Risk Assessment
+	Emergency Plans and Program
+	Trained ERT Responder (Emergency Response Team)
+	Standby Emeergency Materials
+	Communication
+	Trainings / Drills
+
+Communication Guidelines
+	- Equipped / Organized Safety Materials  - materials availability
+	- Emergency Procedures 		    	 - Oriented workers and policy guidelines
+	- Updated Safety Programs / Policies 	 - employees updated trends and protocols
+	- Drills 				 - annual trainings and seminars
+
+
+
+
+
+government licensing?
+Sir Joel Binuya and Sir Berlin Rodriguez, NWRB interactor, securing and complying goverment licensing and permits Government Licensing - CPC,  pollution - ECC
+
+gov - sir joel, sir berlin
+pollution - sir benj, engr. gamulo
+
+meter shop purpose
+management of meter set and repairs
+
+Project Management Department
+- revenue centers support for capex projects
+
+Engineering Services
+- Special Projects, water treatment plants, inline boosters, water filtration system
+
+
+
+CBIT KPI
+- support time
+- Data Recovery Time
+- Project Timeline
+

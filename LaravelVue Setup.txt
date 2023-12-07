@@ -1,0 +1,134 @@
+- laravel new [Project Name] or composer create-project laravel/laravel:^9.0 [Project Name] or composer create-project laravel/laravel example-app
+- cd [Project Name] 
+- npm install
+- npm i vue@next 
+- npm install vue-router@next --save
+- npm i @vitejs/plugin-vue
+
+
+- add this to vite.config.js
+
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import vue from "@vitejs/plugin-vue";
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+        vue({
+            template:{
+                transformAssetUrls:{
+                    base:null,
+                    includeAbsolute:false,
+                }
+            },
+        }),
+        
+    ],
+});
+
+
+
+
+- put this on app.js
+import './bootstrap';
+import {createApp} from 'vue'
+import App from './App.vue'
+import router from './index.js'
+
+createApp(App).use(router).mount("#app")
+
+-put this on welcome page
+@vite(['resources/js/app.js','resources/css/app.css'])
+or
+@vite('resources/css/app.css')
+    <div id="app">
+            <!-- vue router load templates here -->
+    </div>
+@vite('resources/js/app.js')
+
+-create index.js and put this example reference
+import { createRouter, createWebHistory } from 'vue-router'
+import dashboard from './templates/dashboard.vue'
+import employees from './templates/employees.vue'
+
+
+
+const routes = [
+  {
+    path: '/',
+    name: 'dashboard',
+    component: dashboard
+  },
+  {
+    path: '/employees/:id',
+    name: 'employees',
+    component: employees
+  }
+]
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes
+})
+
+export default router
+
+-- create App.vue file then put this for reference
+<template>
+    <div>
+        <!-- <router-link to="/">Dashboard</router-link>
+        <router-link to="/services">Services</router-link>
+        <router-link to="/departments">Departments</router-link> -->
+    </div>
+    <router-view/>
+</template>
+<style>
+</style>  
+
+
+- php artisan serve
+- npm run dev
+
+if npm run dev error always occur
+run this 
+
+- npm run build
+
+to remove "build" in url put this in .env file (situational)
+
+- VITE_BASE_URL="/"
+
+-- put this on web file of laravel, choose what works for you
+
+// to avoid 404 kapag nag rerefresh ng page
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any', '.*');
+
+// use this if wala namang /id= or any params next sa url
+ Route::get('/{vue_capture?}', function() {
+	return view('welcome');
+ })->where('vue_capture', '[\/\w\.-]*');
+
+
+-- for your script reference
+<script>
+  import { ref, reactive, onMounted, toRefs, computed, createApp, watch } from 'vue'
+  
+  export default {
+    
+    setup() {
+  
+
+      onMounted(() => {
+      })
+  
+      return {
+      }
+    }
+  }
+</script>
+	 	

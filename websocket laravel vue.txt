@@ -1,0 +1,72 @@
+laravel vue realtime websocket installation
+
+after creating project
+
+1.) composer require beyondcode/laravel-websockets - if error occured add -w after websockets
+2.) php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="migrations"
+3.) php artisan migrate
+4.) composer require pusher/pusher-php-server
+5.) Change BROADCAST_DRIVER in env file from BROADCAST_DRIVER =log to BROADCAST_DRIVER =pusher
+6.) go to config/broadcasting.php change the pusher to
+    'pusher' => [
+    	'driver' => 'pusher',
+    	'key' => env('PUSHER_APP_KEY'),
+    	'secret' => env('PUSHER_APP_SECRET'),
+    	'app_id' => env('PUSHER_APP_ID'),
+    	'options' => [
+        	'cluster' => env('PUSHER_APP_CLUSTER'),
+        	'encrypted' => true,
+        	'host' => '127.0.0.1',
+        	'port' => 6001,
+        	'scheme' => 'http'
+    	],
+     ],
+
+7.) Update env file pusher details
+	PUSHER_APP_ID=local
+	PUSHER_APP_KEY=local
+	PUSHER_APP_SECRET=local
+	PUSHER_APP_CLUSTER=mt1
+8.) php artisan websockets:serve then php artisan serve
+9.) to monitor sockets open this link http://127.0.0.1:8000/laravel-websockets
+10.) Create an event and add "implements ShouldBroadcast" after the class name 
+	class Send implements ShouldBroadcast
+	{
+	}
+11.) Update broadcaston to
+	public function broadcastOn()
+    	{
+        	
+        	return new Channel('public');
+        
+    	}
+12.) add this 
+	public function broadcastWith()
+    	{
+      
+        	return [
+               		'message' => 'welcome',
+        	];
+        
+    	}
+13.) add to routes , "Send" is a name, apply what you need
+	use App\Events\Send;
+
+	Route::get('/broadcast', function () {
+    		Send::dispatch();
+    		return 'sent';
+	});
+14.) add this 
+	use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+     and replace ShouldBroadcast with ShouldBroadcastNow
+15.) go config/app.php and uncomment this
+	App\Providers\BroadcastServiceProvider::class,
+16.) run this npms
+	npm i laravel-echo
+	npm i pusher-js
+17.) add this to env.
+	VUE_APP_WEBSOCKETS_KEY=local
+	VUE_APP_WEBSOCKETS_SERVER=127.0.0.1
+
+	baseURL= http://127.0.0.1:8000
+

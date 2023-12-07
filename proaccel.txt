@@ -1,0 +1,53 @@
+suod apt-get update
+sudo adduser [proaccel-admin]
+proacceltech2023 pass
+
+
+sudo usermod -aG sudo proaccel-admin
+
+login to user proaccel-admin
+su - proaccel-admin
+
+
+get bitnami file here 207.148.75.150, bwsiiis iistech2021
+upload to the server
+
+
+
+dir, check if the file exist bitnami-erpnext-12.14.0-0-linux-x64-installer.run,
+
+
+ 
+sudo chmod 755 bitnami-erpnext-12.16.2-0-linux-x64-installer.run
+re-type password
+
+./bitnami-erpnext-12.16.2-0-linux-x64-installer.run
+
+after install, press enter on select folder
+add name: Proaccel
+add email address: hit enter
+login user: proaccel
+password: proacceltech2023
+
+press Y for installation
+
+
+after installation restart, then login to proaccel-admin
+then 
+cd erpnext-12.16.2-0/
+./ctlscript.sh start
+
+./use_erpnext
+cd apps/erpnext/htdocs/frappe-bench
+mysql -u root -p  pass:proacceltech2023
+DROP DATABASE bitnami_erpnext;
+exit;
+
+
+cd
+gunzip 20230729_090836-erpnext-database.sql 
+
+cd erpnext-12.16.2-0/
+cd apps/erpnext/htdocs/frappe-bench
+bench restore /home/proaccel-admin/20230729_090836-erpnext-database.sql 
+root pass: proacceltech2023

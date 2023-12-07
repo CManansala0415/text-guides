@@ -1,0 +1,33 @@
+
+1.) download file to auth0
+2.) add this to redirect uri
+
+AUTH0_REDIRECT_URI=http://localhost:3000/auth0/callback
+
+3.) install these
+composer install
+php artisan migrate
+php artisan key:generate
+php artisan serve --port=3000
+
+4.) if auth0 not defined error occur, do this
+
+composer require auth0/login
+php artisan vendor:publish --tag=auth0-config --force
+
+5.) if this error exists Auth driver [auth0] for guard [auth0] is not defined. put this on config/auth.php
+
+ 'auth0' => [
+            'driver' => 'auth0.guard',
+            'provider' => 'auth0',
+        ],
+
+5.) if this error existsAuthentication user provider [auth0] is not defined. put this on config/auth.php
+
+'auth0' => [
+            'driver' => 'auth0.provider',
+            'repository' => \Auth0\Laravel\Auth\User\Repository::class,
+
+            // Uncomment this line for a demonstration of a custom UserRepository (app/Auth/CustomUserRepository.php)
+            // 'repository' => App\Auth\CustomUserRepository::class
+        ],

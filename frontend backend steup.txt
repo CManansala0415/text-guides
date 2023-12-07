@@ -1,0 +1,202 @@
+
+configure front end 
+
+- laravel new [projectname]
+- cd [projectname]
+- npm create vite@latest
+- [project name, preferrable front end name]
+- Vue
+- JavaScript
+- cd [frontend name]
+- npm install
+- npm run dev
+
+you may install these beforehand
+
+- npm install axios
+- npm install bootstrap
+- npm install vue-router@4
+
+then create a file named axios.js under src folder then add the code inside
+
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost:8000";
+
+edit main.js add this code
+
+import { createApp } from 'vue'
+import router from './routes'
+
+import './axios'
+import './style.css'
+import App from './App.vue'
+
+const app = createApp(App);
+app.use(router)
+
+app.mount('#app')
+
+	use these code project imports 
+
+	- import axios from 'axios';
+	- import "bootstrap/dist/css/bootstrap.min.css"
+
+create a folder name routes under src then create file named index.js add this code after creating components in components older
+
+import { createRouter, createMemoryHistory, createWebHashHistory } from "vue-router";
+import Home from '../components/Home.vue'
+const routes = [
+     
+    {
+        path: '/', name:'Login', component: () => import("../components/Login.vue")
+    },
+    {
+        path: '/Home', name:'Home', component: Home
+    }
+];
+
+
+const router = createRouter({
+    history:createWebHashHistory(),
+    routes
+})
+
+export default router;
+
+
+open App.vue add this code, in this file you can import your templates from public folder
+
+<template>
+  <RouterView></RouterView>
+</template>
+
+
+open vite.config.js in frontend file, because we used 3000 as port, depends on you
+  plugins: [vue()],
+  server:{
+      port:3000
+  }
+
+configure backend
+
+- cd [projectname]
+- composer require laravel/breeze --dev
+- php artisan breeze:install api
+
+change frontend url in env according to the port you prefer ex. FRONTEND_URL=http://localhost:3000
+add this to env after FRONTEND_URL SANCTUM_STATEFUL_DOMAINS=localhost:3000 // port depends on url you made in frontend_url
+add this after SANCTUM_STATEFUL_DOMAINS, SESSION_DOMAIN=localhost
+add your database
+
+- php artisan migrate
+
+if error exist in migration add this step
+- got to file /config/database.php
+add this inside mysql 'engine' => 'InnoDB',
+
+
+
+
+uncomment this for seeder, DatabaseSeeder.php
+
+\App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+
+to add user in user table, run this in backend terminal
+
+php artisan migrate:fresh --seed
+
+RouteServiceProvider.php update landing page, find dashboard then replace it with you homepage
+
+user sweet alert? optional
+
+npm install -S vue-sweetalert2
+
+add this in main.js file 
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import './index.css'
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+const app = createApp(App)
+
+app.use(VueSweetalert2);
+
+app.mount('#app');
+
+
+tailwind css
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+npm install tailwindcss
+
+replace config with this to tailwind.config
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+create file under assets
+tailwind.css
+
+paste this to tailwind.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+import your tailwind on main.js
+
+import './assets/tailwind.css'
+
+
+
+
+
+
+
+sample config of tailwind.config.js
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors:{
+        "elite-color" : "#00668A"
+      }
+    },
+    fontFamily:{
+      Roboto: ["Roboto, sans-serif"]
+    },
+    container:{
+      padding: "2rem",
+      center: true,
+    },
+    screens:{
+      sm:"640px",
+      md:"768px",
+    }
+  },
+  plugins: [],
+}

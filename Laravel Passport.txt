@@ -1,0 +1,88 @@
+1. Laravel New [Projectname]
+2. composer require laravel/passport if error occurs add -w
+3. open data/migrations/create_users then add this 
+	 Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('role')->default('author');
+            $table->rememberToken();
+            $table->timestamps();
+        });  
+4. php artisan migrate
+5. search this 'engine' => 'null' edit null to InnoDB
+6. paste this to DatabaseSeeder.php
+	\App\Models\User::factory()->create([
+            'name' => 'Carl',
+            'email' => 'carl123@gmail.com',
+            'password' => app('hash')->make('password'),
+            'role' => 'Administrator',
+        ]);
+6. php artisan passport:install
+7. add this to AuthServiceProvider.php 
+	use laravel\Passport\Passport
+8. open config/auth.php and add this
+	'guards' => [
+    		'web' => [
+        		'driver' => 'session',
+        		'provider' => 'users',
+    		],
+ 
+    		'api' => [
+        		'driver' => 'passport',
+        		'provider' => 'users',
+    		],
+	],
+9. open AuthServiceProvider.php then add this
+	public function boot(): void
+    	{
+        	Passport::tokensCan([
+            		'*' => 'administrator',
+            		'create' => 'author',
+        	]);
+    		
+    	}
+10. Create Controller then paste the code
+	<?php
+
+	namespace App\Http\Controllers;
+
+	use Illuminate\Http\Request;
+	use App\Models\User;
+	class AuthController extends Controller
+	{
+    		public function register(Request $request){
+        		$request->validate([
+            			'name' => 'required|string|max:255',
+            			'email' => 'required|string|email',
+            			'password' => 'required|string|confirmed',
+        	]);
+
+        	$user = new User();
+        	$user->name = $request->name;
+        	$user->email = $request->email;
+        	$user->password = app('hash')->make($request->password);
+
+        	if($user->save()){
+            		return response()->json([
+                		'message' => 'User Created Successfully',
+                		'status' => '201',
+            		],201);
+        	}
+
+        	else{
+            		return response()->json([
+                		'message' => 'Error occured',
+                		'status' => '500',
+            		],500);
+        	}
+   	 	}
+	}
+
+11. open api.php then add the lines
+	use App\Http\Controllers\AuthController;
+	Route::group(['prefix' => 'auth'], function (){
+   		 Route::post('register',[AuthController::class,'register']);
+	});
