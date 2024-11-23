@@ -200,3 +200,24 @@ export default {
   },
   plugins: [],
 }
+
+if bootstrap and use fa fa icon
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/vue-fontawesome@latest-3
+
+if bootstrap use this main
+import { createApp } from 'vue'
+import router from './routes'
+import './axios'
+import './style.css'
+import App from './App.vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import bootstrap  from 'bootstrap/dist/js/bootstrap.bundle.js'
+
+
+const app = createApp(App);
+app.use(router,bootstrap)
+app.mount('#app')
